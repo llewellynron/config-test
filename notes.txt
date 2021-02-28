@@ -49,6 +49,9 @@ git log
 #restore or pull file
 git checkout
 
+#remove a file
+git rm <file_name>
+
 git push origin :<branch_to_delete>
 
 #SSH Setup
