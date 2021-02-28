@@ -54,4 +54,6 @@ git rm <file_name>
 
 git push origin :<branch_to_delete>
 
-#SSH Setup
+git log --oneline --all --decorate --graph
+git config --global alias.hist "log --oneline --all --decorate --graph"
+git hist
