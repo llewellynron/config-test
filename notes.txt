@@ -1,0 +1,54 @@
+#Local git states
+# working dir -(add)-> staging area -(commit)-> repository (.git folder) -(push)-> remote repo
+#
+# main branch is now used instead of master branch
+
+Common git commands:
+git version
+git help
+git help config
+cat ~/.gitconfig
+git config --global --list
+git config --global user.email "llewellynron@hotmail.com"
+git config --global user.name "Ron Llewellyn"
+git config --global core.editor
+core.editor="C:\Users\Ron\AppData\Local\atom\app-1.54.0\atom.exe" --wait
+
+git remote -v
+git remote show
+git remote show origin
+
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/llewellynron/config-test.git
+git push -u origin main
+git remote add origin https://github.com/llewellynron/config-test.git
+git branch -M main
+git push -u origin main
+git status
+
+# Add all
+git add -A
+git add .
+git commit -m "commit changes"
+
+git commit -am "add and commit changes"
+
+#New Repo -- updated from local
+#Create repo on github
+git remove add origin "copied repo URL"
+git clone "copied repo URL"   #should copy README.md file)
+git add * or git add . or git add file_name
+git comment -m "<message>"
+git push origin "<branch_name>"
+
+git branch -a
+git log
+
+#restore or pull file
+git checkout
+
+git push origin :<branch_to_delete>
+
+#SSH Setup
