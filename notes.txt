@@ -63,4 +63,4 @@ git hist
 #  Pycharm Notes
 CTRL + /  = comment selected lines
 ALT + RightClick = Select column position for movement control
-SHFT + ALT + (UP or DOWN) = Move selected lines up or down
+SHIFT + ALT + (UP or DOWN) = Move selected lines up or down
