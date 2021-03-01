@@ -4,7 +4,7 @@
 # main branch is now used instead of master branch
 
 Common git commands:
-git clone <repo_URL>
+git clone <repo_URL>    # Will create repo directory when run
 git version
 git help
 git help config
