@@ -4,6 +4,7 @@
 # main branch is now used instead of master branch
 
 Common git commands:
+git clone <repo_URL>
 git version
 git help
 git help config
@@ -57,3 +58,9 @@ git push origin :<branch_to_delete>
 git log --oneline --all --decorate --graph
 git config --global alias.hist "log --oneline --all --decorate --graph"
 git hist
+
+
+#  Pycharm Notes
+CTRL + /  = comment selected lines
+ALT + RightClick = Select column position for movement control
+SHFT + ALT + (UP or DOWN) = Move selected lines up or down
