@@ -21,6 +21,26 @@ git remote show origin
 
 git add README.md
 git commit -m "first commit"
+
+git branch          # see current branch_name and all branches
+git branch <new_branch_name>  # Create a new branch
+git checkout branch_name      # Change to branch_name
+git checkout -b <new_branch_name>   # Will checkout and create new branch in one step
+    (now create files that will later be merged back to main branch)
+    Example:
+    git add README.md
+    git commit -m "Adding READM file for  new branch"
+    git checkout main
+    git diff new_branch_name main   # will show how the change will merge
+    git hist
+    git merge new_branch_name   # perform the merge (into main (current) branch)
+    git hist
+    # Above merge will be a fast forward merge, will show in history as though update was to main/merged branches
+    git merge --no-ff new_branch_name   # perform the merge w/o FF, will open editor for commit message input
+    git hist
+
+# Automatic merge is a merge with no conflicts (can be a fast forward merge)
+
 git branch -M main
 git remote add origin https://github.com/llewellynron/config-test.git
 git push -u origin main
@@ -33,8 +53,7 @@ git status
 git add -A
 git add .
 git commit -m "commit changes"
-
-git commit -am "add and commit changes"
+git commit -am "express commit; add and commit changes"
 
 #New Repo -- updated from local
 #Create repo on github
