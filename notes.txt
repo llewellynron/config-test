@@ -14,6 +14,8 @@ git config --global user.email "llewellynron@hotmail.com"
 git config --global user.name "Ron Llewellyn"
 git config --global core.editor
 core.editor="C:\Users\Ron\AppData\Local\atom\app-1.54.0\atom.exe" --wait
+git config --global diff.tool p4merge
+git config --global alias.hist "log --oneline --all --decorate --graph"
 
 git remote -v
 git remote show
@@ -32,12 +34,22 @@ git checkout -b <new_branch_name>   # Will checkout and create new branch in one
     git commit -m "Adding READM file for  new branch"
     git checkout main
     git diff new_branch_name main   # will show how the change will merge
+    git difftool new_branch_name main  # will show the changes using difftool (p4merge)
     git hist
-    git merge new_branch_name   # perform the merge (into main (current) branch)
+    git merge new_branch_name [-m "comment"]  # perform the merge (into main (current) branch)
+    #  If merge conflicts, git will update the merge files with special markers
+    git merge --abort     # aborts a pior merge which had conflicts
+    git mergetool         # will start your configured merge difftool
+    git commit -m "comment"  # Run after merge edits
+    #  After merge updates, will need to eventually remove .orig files
     git hist
     # Above merge will be a fast forward merge, will show in history as though update was to main/merged branches
     git merge --no-ff new_branch_name   # perform the merge w/o FF, will open editor for commit message input
     git hist
+    git branch -d branch_name   # Delete a branch (do after confidence in merge completed)  hist will
+    git fetch --called  # will synch references with github
+    git fetch -p        # will prune any branches that have been deleted on github
+    git push origin branch_name --deleted   # will delete branch on github
 
 # Automatic merge is a merge with no conflicts (can be a fast forward merge)
 
@@ -66,9 +78,6 @@ git push origin "<branch_name>"
 git branch -a
 git log
 
-#restore or pull file
-git checkout
-
 #remove a file
 git rm <file_name>
 
@@ -78,8 +87,60 @@ git log --oneline --all --decorate --graph
 git config --global alias.hist "log --oneline --all --decorate --graph"
 git hist
 
+fork a repo on github  (will create your personal repo copy)
+git clone (prefer to use SSH URL)
+get fetch --all     # fetch down all the branches from that Git remote
+
 
 #  Pycharm Notes
 CTRL + /  = comment selected lines
 ALT + RightClick = Select column position for movement control
 SHIFT + ALT + (UP or DOWN) = Move selected lines up or down
+
+
+C:\Users\lewellyn\type .gitconfig
+[user]
+        name = Ron Llewellyn
+        email = llewellynron@hotmail.com
+[core]
+        editor = atom --wait
+[alias]
+        hist = log --oneline --all --decorate --graph
+[diff]
+        tool = p4merge
+[difftool "p4merge"]
+        path = C:/Program Files/Perforce/p4merge.exe
+[difftool]
+        prompt = false
+[merge]
+        tool = p4merge
+[mergetool "p4merge"]
+        path = C:/Program Files/Perforce/p4merge.exe
+[mergetool]
+        prompt = false
+[gui]
+        recentrepo = C:/Users/lewellyn/projects/website
+[guitool "Atom / Current Directory"]
+        cmd = atom .
+        noconsole = yes
+[guitool "Atom / Selected File"]
+        cmd = atom $FILENAME
+        noconsole = yes
+        needsfile = yes
+
+HEAD Pointer in Git
+  Git maintains a variable for referencing, called HEAD to the latest
+  commit in the recent checkout branch. You can imagine HEAD as the
+  “current committed branch”. And we can think of as a pointer, as the
+  purpose of this variable is to point to or act as a reference to a
+  particular commit in the repository. Say, we make a new commit in the
+  repo then the pointer or HEAD is going to move or change its position to
+  point to a new commit.
+
+  HEAD points to the starting point of the present branch in the
+  repository at all times. It can be thought of as the last state or the
+  last checked out point in a repository. In other words, the HEAD is a
+  pointer to the next commits’ parent or where the next commit is going to
+  happen as that’s where the repo left off.
+
+  cat .git\HEAD
